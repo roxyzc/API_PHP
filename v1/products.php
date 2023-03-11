@@ -10,24 +10,24 @@ switch ($request_method) {
         // Retrive Products
         if (!empty($_GET["id"])) {
             $id = intval($_GET["id"]);
-            get_employee($id);
+            get_product($id);
         } else {
-            get_employees();
+            get_products();
         }
         break;
     case 'POST':
         // Insert Product
-        insert_employee();
+        insert_product();
         break;
     case 'PUT':
         // Update Product
         $id = intval($_GET["id"]);
-        update_employee($id);
+        update_product($id);
         break;
     case 'DELETE':
         // Delete Product
         $id = intval($_GET["id"]);
-        delete_employee($id);
+        delete_product($id);
         break;
     default:
         // Invalid Request Method

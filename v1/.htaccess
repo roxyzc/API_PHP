@@ -1,5 +1,5 @@
 RewriteEngine On # Turn on the rewriting engine
-RewriteRule ^employees/?$ employees.php [NC,L]
-RewriteRule ^employees/([0-9]+)/?$ employees.php?id=$1 [NC,L]
-RewriteRule ^coba/?$ coba.php [NC,L]
-RewriteRule ^coba/([0-9]+)/?$ coba.php?id=$1 [NC,L]
+RewriteRule ^products/?$ products.php [NC,L]
+RewriteRule ^products/([0-9]+)/?$ products.php?id=$1 [NC,L]
+RewriteRule ^mahasiswa/?$ mahasiswa.php [NC,L]
+RewriteRule ^mahasiswa/([0-9]+)/?$ mahasiswa.php?id=$1 [NC,L]

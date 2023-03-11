@@ -1,42 +1,44 @@
 <?php
 include("../connection.php");
 
-function getCoba1()
+function getMahasiswa()
 {
     global $connection;
-    $query = "SELECT * FROM tb_coba";
+    $query = "SELECT * FROM tb_mahasiswa";
     $response = array();
     $result = mysqli_query($connection, $query);
     while ($row = mysqli_fetch_array($result)) {
-        $response[] = array("id" => $row["id"], "nama" => $row["coba"]);
+        $response[] = array("id" => $row["id"], "nama_mahasiswa" => $row["nama"], "kelas_mahasiswa" => $row["kelas"], "nim_mahasiswa" => $row["nim"]);
     }
     header('Content-Type: application/json');
     echo json_encode($response);
 }
 
-function getCoba2($id = 0)
+function getMahasiswaById($id = 0)
 {
     global $connection;
-    $query = "SELECT * FROM tb_coba";
+    $query = "SELECT * FROM tb_mahasiswa";
     if ($id != 0) {
         $query .= " WHERE id=" . $id . " LIMIT 1";
     }
     $response = array();
     $result = mysqli_query($connection, $query);
     while ($row = mysqli_fetch_array($result)) {
-        $response[] = array("coba" => $row["coba"]);
+        $response[] = array("id" => $row["id"], "nama_mahasiswa" => $row["nama"], "kelas_mahasiswa" => $row["kelas"], "nim_mahasiswa" => $row["nim"]);
     }
     header('Content-Type: application/json');
     echo json_encode($response);
 }
 
-function insert_employee()
+function insert_mahasiswa()
 {
     global $connection;
     $data = json_decode(file_get_contents('php://input'), true);
     $nama = $data["nama"];
-    echo $query = "INSERT INTO tb_coba SET 
-     coba='" . $nama . "'";
+    $kelas = $data["kelas"];
+    $nim = $data["nim"];
+    echo $query = "INSERT INTO tb_mahasiswa SET 
+     nama='" . $nama . "', kelas='" . $kelas . "', nim='" . $nim . "'";
     if (mysqli_query($connection, $query)) {
         $response = array(
             'status' => 1,
@@ -60,14 +62,14 @@ switch ($request_method) {
         // Retrive Products
         if (!empty($_GET["id"])) {
             $id = intval($_GET["id"]);
-            getCoba2($id);
+            getMahasiswaById($id);
         } else {
-            getCoba1();
+            getMahasiswa();
         }
         break;
     case 'POST':
         // Insert Product
-        insert_employee();
+        insert_mahasiswa();
         break;
     default:
         // Invalid Request Method
