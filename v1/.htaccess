@@ -1,3 +1,5 @@
 RewriteEngine On # Turn on the rewriting engine
-RewriteRule ^apage/?$ employees.php [NC,L]
-RewriteRule ^apage/([0-9]+)/?$ employees.php?id=$1 [NC,L]
+RewriteRule ^employees/?$ employees.php [NC,L]
+RewriteRule ^employees/([0-9]+)/?$ employees.php?id=$1 [NC,L]
+RewriteRule ^coba/?$ coba.php [NC,L]
+RewriteRule ^coba/([0-9]+)/?$ coba.php?id=$1 [NC,L]
