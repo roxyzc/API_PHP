@@ -5,6 +5,7 @@ include("./services.php");
 $db = new dbObject();
 $connection = $db->getConnstring();
 $request_method = $_SERVER["REQUEST_METHOD"];
+
 switch ($request_method) {
     case 'GET':
         // Retrive Products
